@@ -16,10 +16,15 @@ const Signup = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const phoneRegex = /^\d{10}$/;
 
-    localStorage.setItem("user", JSON.stringify(inputs));
-    setInputs({ fullname: "", email: "", phone: "", password: "" });
-    alert("Registration Successfull");
+    if (phoneRegex.test(inputs.phone)) {
+      localStorage.setItem("user", JSON.stringify(inputs));
+      setInputs({ fullname: "", email: "", phone: "", password: "" });
+      alert("Registration Successfull");
+    } else {
+      alert("enter correct phone number");
+    }
   };
   return (
     <div className="container">
